@@ -50,18 +50,14 @@ def register():
     
     register_form = RegisterForm()
     if register_form.validate_on_submit():
-        form_email = register_form.email.data.lower()
-        user = User.query.filter_by(email=form_email).first()
-        if user:
-            flash('Email already in use. Please use another', 'warning')
-        else:
-            form_name = register_form.name.data.strip()
-            hashed_password = bcrypt.generate_password_hash(register_form.password.data).decode('utf-8')
-            user = User(name=form_name.strip(), email=form_email, password=hashed_password)
-            db.session.add(user)
-            db.session.commit()
-            flash('Account successfully created! You may now login.', 'success')
-            return redirect(url_for('login'))
+        form_name = register_form.name.data.strip()
+        form_email = register_form.email.data.lower()        
+        hashed_password = bcrypt.generate_password_hash(register_form.password.data).decode('utf-8')
+        user = User(name=form_name, email=form_email, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Account successfully created! You may now login.', 'success')
+        return redirect(url_for('login'))
 
     return render_template('register.html', title='Register', form=register_form)
 
@@ -75,13 +71,10 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         form_email = login_form.email.data
-        form_password = login_form.password.data
         user = User.query.filter_by(email=form_email).first()
-
-        if user and bcrypt.check_password_hash(user.password, form_password):
-            login_user(user)
-            flash('You may now start adding albums to your collection.', 'success')
-            return redirect(url_for('home'))
+        login_user(user)
+        flash('You may now start adding albums to your collection.', 'success')
+        return redirect(url_for('home'))
 
     return render_template('login.html', title='Login', form=login_form)
 
@@ -140,7 +133,7 @@ def add_to_collection(spotify_album_id):
     
     user_album_found = current_user.albums.filter_by(id=album.id).first()
     if user_album_found:
-        flash('Album already added to collection')            
+        flash('Album already added to collection', 'info')            
     else:
         # insert into user_album
         current_user.albums.append(album)
@@ -198,12 +191,10 @@ def album_info_from_search(spotify_album_id):
     if not current_user.is_authenticated:
         in_collection = False
     else:
-        #album_found = get_album_by_spotify_id(spotify_album_id)
         album = Album.query.filter_by(spotify_album_id=spotify_album_id).first()
         if album:
             album_info['db_album_id'] = album.id
 
-            #user_album_found = get_user_album(album_info['db_album_id'])
             user_album_found = current_user.albums.filter_by(id=album.id).first()
             if user_album_found:
                 in_collection = True
@@ -232,7 +223,6 @@ def remove_from_collection(album_id):
         flash('Please login to perform that action', 'warning')
         return redirect(url_for('login'))
     
-    #delete_from_collection(album_id)
     album = Album.query.filter_by(id=album_id).first()
     current_user.albums.remove(album)
     db.session.commit()
