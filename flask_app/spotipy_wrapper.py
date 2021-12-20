@@ -27,7 +27,7 @@ def get_album_tracks(album_tracks):
             'track_number': track['track_number'],
             'name': track['name'],
             'explicit': track['explicit'],
-            'track_duration': str(track_duration).split('.')[0],
+            'duration': str(track_duration).split('.')[0],
             'spotify_track_id': track['id'],
             'spotify_track_uri': track['uri']
         }
@@ -53,7 +53,7 @@ def get_album_info(album_id):
     album_duration, album_tracks = get_album_tracks(album['tracks']['items'])
     
     album_info['album_artist'] = album_artist
-    album_info['album_duration'] = str(album_duration).split('.')[0]
+    album_info['duration'] = str(album_duration).split('.')[0]
     album_info['tracks'] = album_tracks
     
     return album_info

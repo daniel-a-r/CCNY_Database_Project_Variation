@@ -12,9 +12,12 @@
                         {% if field.errors %}
                             {{ field(class="form-control form-control-lg is-invalid") }}
                             <div class="invalid-feedback">
-                                {% for error in field.errors %}
+                                {% if field.errors %}
+                                    <span>{{ field.errors[0] }}</span>
+                                {% endif %}
+                                <!-- {% for error in field.errors %}
                                     <span>{{ error }}</span>
-                                {% endfor %}
+                                {% endfor %} -->
                             </div>
                         {% else %}
                             {{ field(class="form-control form-control-lg") }}

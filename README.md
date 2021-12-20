@@ -1,12 +1,11 @@
-# CCNY_Database_Project
+# CCNY_Database_Project_Variation
 
-This project can be used to track your albums that you have collected in the form of physical media. It uses Spotify data via the Spotipy library to search albums. MySQL and Flask are used for the backend.
+This is a modified repo of the CCNY_Database_Project modified to used SQLAlchemy with sqlite. This project can be used to track your albums that you have collected in the form of physical media. It uses Spotify data via the Spotipy library to search albums. sqlite and Flask are used for the backend.
 
 ## Requirements 
 
 - [Python](https://www.python.org/downloads/)
 - Free Spotify account to access [developer tools](https://developer.spotify.com/dashboard/)
-- [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-windows.html)
 
 ## Instructions to run on your computer
 
@@ -34,9 +33,7 @@ This project can be used to track your albums that you have collected in the for
     pip install -r requirements.txt
     ```
 
-3. Run `project_schema.sql` in MySQL workbench to create database and tables.
-
-4. In `flask_app` folder, create a `.env` file with the following variables:
+3. In `flask_app` folder, create a `.env` file with the following variables:
     
     Key of your choice 
     ```sh
@@ -58,7 +55,7 @@ This project can be used to track your albums that you have collected in the for
     ```
 
     
-5. In `ccny_database_project` folder run: 
+4. In `ccny_database_project` folder run: 
     ```bash
     py run.py
     ```

@@ -3,13 +3,11 @@
 <div class="container album-info mt-4">
   <div>
     <img src="{{ album_info['img_src'] }}" class="mb-2"/>
-    <a href="https://open.spotify.com/album/{{ album_info['spotify_album_id'] }}" target="_blank"><p>{{album_info['album_name']}}</p></a>
+    <a href="https://open.spotify.com/album/{{ album_info['spotify_album_id'] }}" target="_blank"><p>{{album_info['name']}}</p></a>
     <a href="https://open.spotify.com/artist/{{ album_info['spotify_artist_id'] }}" target="_blank"><p>{{album_info['artist_name']}}</p></a>
-    <div>
-      <p>{{album_info['total_tracks']}} songs, {{album_info['album_duration']}}</p>
-      <p>Release Date: {{album_info['release_date']}}</p>
-      <p>Label: {{album_info['label']}}</p>
-    </div>
+    <p>{{album_info['total_tracks']}} songs, {{album_info['duration']}}</p>
+    <p>Release Date: {{album_info['release_date']}}</p>
+    <p>Label: {{album_info['label']}}</p>
     {% if in_collection %}
       <a href="/remove-from-collection/{{ album_info['db_album_id'] }}"><button class="btn btn-danger">Remove From Collection</button></a>
     {% else %}
@@ -21,10 +19,10 @@
     <strong class="track-number track-header">#</strong>
     <strong class="track-name track-header">Title</strong>
     <strong class="track-duration track-header">Duration</strong>
-    {% for track in album_tracks %}
+    {% for track in tracks %}
       <p class="track-number mb-0">{{track['track_number']}}</p>
-      <p class="track-name mb-0">{{track['track_name']}} <strong>{% if track['explicit']%}Explicit{% endif %}</strong></p>
-      <p class="track-duration mb-0">{{track['track_duration']}}</p>
+      <p class="track-name mb-0">{{track['name']}} <strong>{% if track['explicit']%}Explicit{% endif %}</strong></p>
+      <p class="track-duration mb-0">{{track['duration']}}</p>
     {% endfor %}
   </div>
 </div>

@@ -10,7 +10,7 @@
     </head>
     <body>
         <!-- Navbar will go here -->
-        {% if 'user_id' in session %}
+        {% if user_authenticated %}
         <!-- Navbar will have links to tutorial (if we make one), view album collection, profile, logout -->
         <!-- Maybe will also say 'Hello {session['name']} or something?'-->
         <ul>

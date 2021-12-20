@@ -46,10 +46,10 @@
         <div class="albums">
             {% for album in collection %}
                 <div class="mb-3">
-                    <img src="{{ album['album_img_src'] }}" class="mb-2"/>
-                    <p class="mb-2">{{album['album_name']}}</p>
-                    <p class="mb-2">{{album['artist_name']}}</p>
-                    <a href="/album_info/{{ album['album_id'] }}"><button class="btn btn-primary">View More info</button></a>
+                    <img src="{{ album.img_src }}" class="mb-2"/>
+                    <p class="mb-2">{{album.name}}</p>
+                    <p class="mb-2">{{album.artist.name}}</p>
+                    <a href="/album_info/{{ album.id }}"><button class="btn btn-primary">View More info</button></a>
                 </div>
             {% endfor %}
         </div>
