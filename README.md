@@ -18,7 +18,7 @@ This is a modified repo of the CCNY_Database_Project modified to used SQLAlchemy
 
     Activate environment:
 
-    - on Windonws: 
+    - on Windows: 
         ```bash
         env\scripts\activate
         ```
