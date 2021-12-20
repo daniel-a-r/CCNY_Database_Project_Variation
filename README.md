@@ -1,6 +1,6 @@
 # CCNY_Database_Project_Variation
 
-This is a modified repo of the CCNY_Database_Project modified to used SQLAlchemy with sqlite. This project can be used to track your albums that you have collected in the form of physical media. It uses Spotify data via the Spotipy library to search albums. sqlite and Flask are used for the backend.
+This is a modified repo of the CCNY_Database_Project modified to used SQLAlchemy with sqlite. This project can be used to track your albums that you have collected in the form of physical media. It uses Spotify data via the Spotipy library to search albums. SQLite and Flask are used for the backend.
 
 ## Requirements 
 
@@ -39,14 +39,6 @@ This is a modified repo of the CCNY_Database_Project modified to used SQLAlchemy
     ```sh
     SECRET_KEY =
     ``` 
-
-    Your MySQL login credentials. `DATABASE_HOST` is most likely localhost and `DATABASE_USER` is most likely root.
-    ```sh
-    DATABASE_HOST = 
-    DATABASE_USER = 
-    DATABASE_PASS = 
-    DATABASE_SCHEMA = csc336_project
-    ```
     
     Create an app in your Spotify developer dashboard and use the client id and client secret from that app.
     ```sh
